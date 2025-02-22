@@ -39,8 +39,10 @@ async function transferNEX(to, amount = "0.1") {
         let maxPriorityFeePerGas = feeData.maxPriorityFeePerGas || ethers.parseUnits("1", "gwei");
 
         // Ensure maxPriorityFeePerGas does not exceed maxFeePerGas
-        if (maxPriorityFeePerGas > maxFeePerGas) {
-            maxPriorityFeePerGas = maxFeePerGas.sub(ethers.parseUnits("0.1", "gwei"));
+        if (maxFeePerGas && maxPriorityFeePerGas) {
+            if (BigInt(maxPriorityFeePerGas) > BigInt(maxFeePerGas)) {
+                maxPriorityFeePerGas = maxFeePerGas - ethers.parseUnits("0.1", "gwei");
+            }
         }
         console.log(`🔹 Gas Fees: maxFeePerGas=${maxFeePerGas.toString()}, maxPriorityFeePerGas=${maxPriorityFeePerGas.toString()}`);
 
@@ -70,7 +72,7 @@ async function transferNEX(to, amount = "0.1") {
         console.log("      ✅ Transfer Complete ✅  ");
         console.log("==============================\n");
     } catch (error) {
-        console.error("❌ Error sending transaction:", error);
+        console.error("❌ Error sending transaction:", error.message);
     }
 }
 
