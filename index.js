@@ -77,7 +77,7 @@ async function transferNEX(to, amount = "0.1") {
 }
 
 function askForInput() {
-    cfonts.say("NT Exhaust", {
+    cfonts.say("Cryptokom", {
         font: "block",
         align: "center",
         colors: ["cyan", "magenta"],
