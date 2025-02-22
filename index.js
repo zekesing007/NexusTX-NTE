@@ -88,7 +88,7 @@ function askForInput() {
         maxLength: "0",
     });
 
-    console.log(chalk.blue.bold("=== Telegram Channel : NT Exhaust (@NTExhaust) ===", "\x1b[36m"));
+    console.log(chalk.blue.bold("=== Telegram Channel : Cryptokom (@cryptokom2) ===", "\x1b[36m"));
 
     rl.question("Enter recipient addresses (comma-separated): ", (addresses) => {
         const recipients = addresses.split(",").map(addr => addr.trim());
